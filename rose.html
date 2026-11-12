@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Club Event Registration</title>
+<style>
+    header {
+    background-color: rgb(3, 18, 108);
+    color: antiquewhite;
+    text-align: center;
+    padding: 14px;
+}
+
+
+body {
+    background-color: rgb(209, 212, 233);
+    font-family: Cambria, Georgia, 'Times New Roman', serif;
+}
+
+h2 {
+    text-align: center;
+    padding: 5px;
+    font-size: 22px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-color: antiquewhite;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: blue;
+    background: #1512e4;
+    color: antiquewhite;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 12px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    background: white;
+    margin: 40px auto;
+    border-radius: 20px;
+    max-width: 300px;
+    padding: 20px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <h1>College Club Event Registration</h1>
+    </header>
+
+    <div class="card">
+        <h2>Register for a Club Event</h2>
+        <form id="regForm">
+            <input type="text" id="name" placeholder="Student Name">
+            <input type="email" id="email" placeholder="Email">
+            <select id="club">
+                <option value="">Select Club</option>
+                <option>Music</option>
+                <option>Drama</option>
+                <option>Sport</option>
+            </select>
+            <input type="date" id="date">
+            <button type="submit">Register</button>
+        </form>
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        document.getElementById("regForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+  var name  = document.getElementById("name").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var club  = document.getElementById("club").value;
+  var date  = document.getElementById("date").value;
+  var msg   = document.getElementById("msg");
+
+  msg.style.color = "red";
+
+  if (name === "" || email === "") {
+    msg.innerHTML = "Student Name and Email cannot be empty.";
+  } else if (club === "") {
+    msg.innerHTML = "Please select a club.";
+  } else if (date === "") {
+    msg.innerHTML = "Please choose an event date.";
+  } else {
+    msg.style.color = "green";
+    console.log("Registration Details:");
+    console.log(name, email, club, date);
+    msg.innerHTML = "&#10004; Registration Successful!";
+    document.getElementById("regForm").reset();
+  }
+});
+</script>
+</body>
+</html>

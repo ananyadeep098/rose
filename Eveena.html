@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Calculator</title>
+
+        <style>
+
+            body{
+                font-family:Arial;
+                background-color:white;
+                margin:0px;
+                padding:20px;
+            }
+
+            header{
+                background-color:maroon;
+                color:white;
+                text-align:center;
+                padding:20px;
+            }
+
+            nav{
+                background-color:rgb(150, 21, 21);
+                text-align:center;
+                padding:20px;
+            }
+
+            nav a{
+                font-size:16px;
+                color:white;
+                text-decoration:none;
+                margin:20px;
+            }
+
+            .container{
+                background-color:rgb(226, 199, 202);
+                width:350px;
+                margin:40px auto;
+                padding:25px;
+                border-radius:15px;
+            }
+
+            h2{
+                text-align:center;
+                color:rgb(175, 20, 20);
+            }
+
+            input,select{
+                width:100%;
+                padding:12px;
+                margin:10px 0;
+                box-sizing:border-box;
+                border:1px solid grey;
+                border-radius:5px;
+            }
+
+            button{
+                width:100%;
+                padding:12px;
+                background-color:maroon;
+                color:white;
+                border:none;
+                border-radius:5px;
+                font-size:16px;
+                cursor:pointer;
+                margin-top:10px;
+            }
+
+            button:hover{
+                background-color:rgb(87, 118, 44);
+            }
+
+            #message{
+                font-weight:bold;
+                text-align:center;
+                margin-top:15px;
+                color:maroon;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+            <h1>Simple Calculator</h1>
+        </header>
+
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#calculator">CALCULATOR</a>
+            <a href="#about">ABOUT</a>
+        </nav>
+
+        <div class="container">
+
+            <h2>Calculator</h2>
+
+            <form id="myForm">
+
+                <input type="number" id="num1"
+                placeholder="Enter First Number">
+
+                <input type="number" id="num2"
+                placeholder="Enter Second Number">
+
+                <select id="operator">
+                    <option value="">Select Operation</option>
+                    <option value="add">Addition (+)</option>
+                    <option value="sub">Subtraction (-)</option>
+                    <option value="mul">Multiplication (*)</option>
+                    <option value="div">Division (/)</option>
+                </select>
+
+                <button type="submit">Calculate</button>
+
+                <button type="button" onclick="clearForm()">Clear</button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </div>
+
+        <script>
+
+            document.getElementById("myForm").addEventListener("submit",function(event){
+
+                event.preventDefault();
+
+                var num1 = document.getElementById("num1").value;
+
+                var num2 = document.getElementById("num2").value;
+
+                var operator = document.getElementById("operator").value;
+
+                var a = Number(num1);
+
+                var b = Number(num2);
+
+                var result;
+
+                if(num1 == "" || num2 == "" || operator == ""){
+
+                    alert("Please fill all the details");
+
+                }
+
+                else if(operator == "add"){
+
+                    result = a + b;
+
+                }
+
+                else if(operator == "sub"){
+
+                    result = a - b;
+
+                }
+
+                else if(operator == "mul"){
+
+                    result = a * b;
+
+                }
+
+                else if(operator == "div"){
+
+                    if(b == 0){
+
+                        alert("Cannot divide by zero");
+                        return;
+
+                    }
+
+                    result = a / b;
+
+                }
+
+                document.getElementById("message").innerHTML =
+                "Result: " + result;
+
+            });
+
+            function clearForm(){
+
+                document.getElementById("myForm").reset();
+
+                document.getElementById("message").innerHTML = "";
+
+            }
+
+        </script>
+
+    </body>
+</html>
